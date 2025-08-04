@@ -1,223 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Daud Sunuwar - Digital Networking</title>
-<style>
-  /* Reset and basics */
-  * {
-    box-sizing: border-box;
-  }
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0; padding: 0;
-    background: #fff;
-    color: #333;
-    min-height: 100vh;
-  }
-  header {
-    background: linear-gradient(45deg, #ff6b6b, #feca57);
-    padding: 3rem 1rem;
-    text-align: center;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    animation: fadeInDown 1s ease forwards;
-    color: #fff;
-  }
-  header h1 {
-    margin: 0;
-    font-size: 3rem;
-    letter-spacing: 2px;
-  }
-  header p {
-    margin: 0.5rem 0 0;
-    font-size: 1.3rem;
-    font-weight: 600;
-  }
-  main {
-    max-width: 750px;
-    margin: 2rem auto 4rem;
-  }
-  section {
-    margin-bottom: 3rem;
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 1s ease forwards;
-  }
-  /* Different pastel backgrounds for each section */
-  section#about {
-    background: #ffe3e3;
-    color: #6b1e1e;
-  }
-  section#skills {
-    background: #e0f7fa;
-    color: #006064;
-  }
-  section#experience {
-    background: #fff3e0;
-    color: #bf360c;
-  }
-  section#contact {
-    background: #e8f5e9;
-    color: #1b5e20;
-  }
-  section:nth-child(1) { animation-delay: 0.3s; }
-  section:nth-child(2) { animation-delay: 0.6s; }
-  section:nth-child(3) { animation-delay: 0.9s; }
-  section:nth-child(4) { animation-delay: 1.2s; }
-  h2 {
-    border-bottom: 3px solid currentColor;
-    padding-bottom: 0.6rem;
-    margin-bottom: 1.2rem;
-    font-weight: 700;
-    letter-spacing: 1.2px;
-  }
-  ul.skills-list {
-    list-style: none;
-    padding-left: 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-  ul.skills-list li {
-    background: #ffd54f;
-    color: #5d4037;
-    padding: 0.6rem 1.2rem;
-    border-radius: 30px;
-    font-weight: 700;
-    font-size: 1rem;
-    cursor: default;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  ul.skills-list li:hover {
-    transform: scale(1.15);
-    box-shadow: 0 4px 15px rgba(255, 213, 79, 0.6);
-  }
-  .contact-links a {
-    margin-right: 1.5rem;
-    font-weight: 700;
-    font-size: 1.1rem;
-    text-decoration: none;
-    transition: color 0.3s ease, transform 0.3s ease;
-  }
-  /* Colors for contact links matching the contact section theme */
-  section#contact .contact-links a {
-    color: #388e3c;
-  }
-  section#contact .contact-links a:hover {
-    color: #1b5e20;
-    transform: scale(1.2);
-  }
-  footer {
-    text-align: center;
-    padding: 1rem 0;
-    color: #555;
-    font-size: 0.9rem;
-  }
-  /* Animations */
-  @keyframes fadeInUp {
-    from {opacity: 0; transform: translateY(20px);}
-    to {opacity: 1; transform: translateY(0);}
-  }
-  @keyframes fadeInDown {
-    from {opacity: 0; transform: translateY(-20px);}
-    to {opacity: 1; transform: translateY(0);}
-  }
-  /* Responsive */
-  @media (max-width: 600px) {
-    main {
-      margin: 1rem;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Daud Sunuwar - Digital Networking</title>
+  <style>
+    /* Reset */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
+
+    html, body {
+      height: 100%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #ffffff;
+      overflow-x: hidden;
+    }
+
+    /* Background Image */
+    body {
+      background: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+      background-size: cover;
+      position: relative;
+    }
+
+    /* Dark overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 30, 0.65);
+      z-index: -1;
+    }
+
+    /* Section Styles */
+    header, section, footer {
+      padding: 3rem 2rem;
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+      animation: fadeSlideIn 1.2s ease-out both;
+    }
+
     header h1 {
-      font-size: 2.2rem;
+      font-size: 2.5rem;
+      color: #ffe68f;
+      text-shadow: 0 0 10px #ffd700;
     }
-    ul.skills-list {
-      justify-content: center;
+
+    header p {
+      font-size: 1.2rem;
+      color: #e0e0ff;
     }
-  }
-</style>
+
+    h2 {
+      font-size: 2rem;
+      color: #9be7ff;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 6px #67d7ff;
+    }
+
+    p, li {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: #e8f0ff;
+    }
+
+    li {
+      margin: 0.5rem 0;
+    }
+
+    a {
+      color: #ff9bf1;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      font-size: 0.9rem;
+      color: #ccccff;
+      margin-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* Animations */
+    @keyframes fadeSlideIn {
+      0% {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    section {
+      background: rgba(20, 20, 50, 0.4);
+      border-radius: 12px;
+      margin-top: 2rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      h2 {
+        font-size: 1.5rem;
+      }
+      section {
+        padding: 2rem 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
+  <header>
+    <h1>Daud Sunuwar</h1>
+    <p>Digital Networking | Marketing | Cinematography</p>
+  </header>
 
-<header>
-  <h1>Daud Sunuwar</h1>
-  <p>Digital Networking</p>
-</header>
-
-<main>
-  <section id="about">
+  <section>
     <h2>About Me</h2>
-    <p>Hi, I work and help in digital marketing your brand on different social platforms with import and export of properties.</p>
+    <p>I specialize in digital marketing, content creation, and tech-powered brand strategy. From cloud platforms to cinematic visuals, I bring ideas to life in every format.</p>
   </section>
 
-  <section id="skills">
-    <h2>Skills</h2>
-    <ul class="skills-list">
-      <li>Web Development</li>
-      <li>Data Analysis</li>
-      <li>Project Management</li>
-      <li>Graphic Design</li>
-      <li>SEO</li>
+  <section>
+    <h2>Experience</h2>
+    <ul>
+      <li>COO at Maili Aama Designing House (2019–2023)</li>
+      <li>Data Analyst at CloudFactory (2019–2022)</li>
+      <li>Marketing Sales at Frog Cleaning</li>
+      <li>Teacher at Local High School</li>
+      <li>Cinematographer at Zion Media</li>
+      <li>Digital Marketing head at Nepal Handicraft</li>
     </ul>
   </section>
 
- <section id="experience">
-  <h2>Experience</h2>
-  <p><strong>COO</strong> at <em>Maili Aama Designing House</em> (2019 – 2023)</p>
-  <ul>
-    <li>Facilitated market strategies and handled day-to-day business operations</li>
-    <li>Helped design and meet customers' design demands</li>
-  </ul>
+  <section>
+    <h2>Skills</h2>
+    <p>Web Development, Data Analysis, Project Management, Graphic Design, SEO, Video Editing</p>
+  </section>
 
-  <p><strong>Data Analyst</strong> at <em>CloudFactory</em> (2019 – 2022)</p>
-  <ul>
-    <li>Analyzed data to support business decisions and optimize workflows</li>
-    <li>Collaborated with cross-functional teams to improve data quality</li>
-  </ul>
-
-  <p><strong>Marketing Sales</strong> at <em>Frog Cleaning</em></p>
-  <ul>
-    <li>Developed marketing strategies to boost sales</li>
-    <li>Managed client relationships and sales pipeline</li>
-  </ul>
-
-  <p><strong>Teacher</strong> at <em>Local High School</em></p>
-  <ul>
-    <li>Taught multiple subjects and helped students achieve academic success</li>
-    <li>Organized extracurricular activities and school events</li>
-  </ul>
-
-  <p><strong>Digital Networking Head </strong> at <em>Nepal Handicraft</em></p>
-  <ul>
-    <li>Networking work internationally</li>
-    <li>Social media marketing digital</li>
-  </ul>
-
-  <p><strong>Cinematographer</strong> at <em>Zion Media</em></p>
-  <ul>
-    <li>Shot and edited videos for promotional content and events</li>
-    <li>Collaborated with creative teams to produce high-quality visuals</li>
-  </ul>
-</section>
-
-  <section id="contact">
+  <section>
     <h2>Contact</h2>
     <p>Email: <a href="mailto:daudsunuwar@icloud.com">daudsunuwar@icloud.com</a></p>
-    <p>Phone: <a href="tel:+979823557897">+97 9823557897</a></p>
-    <div class="contact-links">
-      <a href="https://linkedin.com/in/daudsunuwar" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      <a href="https://github.com/daudsunuwar" target="_blank" rel="noopener noreferrer">GitHub</a>
-      <a href="https://twitter.com/daudsunuwar" target="_blank" rel="noopener noreferrer">Twitter</a>
-    </div>
+    <p>LinkedIn | GitHub | Instagram</p>
   </section>
-</main>
 
-<footer>
-  &copy; 2025 Daud Sunuwar. All rights reserved.
-</footer>
-
+  <footer>
+    <p>© 2025 Daud Sunuwar</p>
+  </footer>
 </body>
 </html>
